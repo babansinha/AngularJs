@@ -14,9 +14,22 @@
 	</ul>
 	
 	<div ng-app>
-		<p>Input data into input box to show Angular data bind:</p>
-		<p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
-		<h2>Dear {{name}}</h2>
+		<p>Name : <input type="text" ng-model="name" placeholder="Enter name here..."><br>
+		<span style="color:green;">Hello <b>{{name}}</b></span>
+		</p>
+		
+		
+		<h3><i>ng-init</i> directive initialize AngularJS application variables.</h3>
+		
+		<div ng-init="firstName='Baban Sinha'">
+			<p>Hello Mr. <b><span ng-bind="firstName"></span></b>
+			<br><br>
+			<b>NOTE : </b>You can use <b>data-ng-</b>, instead of <b>ng-</b>
+			</p>
+		</div>
+		
+
+		
 	</div>
 	
 </body>
