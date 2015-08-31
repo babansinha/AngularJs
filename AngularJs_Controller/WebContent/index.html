@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<script src="scripts/js/angular-1.3.16.js"></script>
+</head>
+<body >
+	<h1>AngularJs Controller concepts</h1>
+	<p>AngularJS applications are controlled by controllers. </p>
+	<p>The <strong>ng-controller</strong> 
+		directive defines the application controller. 
+	</p>
+	<p>A controller is a <strong>JavaScript Object</strong>, created by a standard JavaScript <strong>object constructor</strong>.</p>
+	<hr>
+	
+	<div  ng-controller="myCtrl">
+		First Name: <input type="text" ng-model="firstName"><br>
+		Last Name: <input type="text" ng-model="lastName"><br>
+		<br>
+		Full Name: {{firstName + " " + lastName}}
+	</div>
+
+
+	<hr>
+	<p>Application explained:</p>
+	<p>The AngularJS application is defined by&nbsp; <strong>ng-app="myApp"</strong>. The application 
+	runs inside the &lt;div&gt;.</p>
+	<p>The <strong>ng-controller="myCtrl"</strong> attribute is an AngularJS directive. 
+	It defines a 
+	controller.</p>
+	<p>The <strong>myCtrl</strong> function is a JavaScript function.</p>
+	<p>AngularJS will invoke the controller with a <strong>$scope</strong> object.</p>
+	<p>In AngularJS, $scope is the application object (the owner of application 
+	variables and functions).</p>
+	<p>The controller creates two properties (variables) in the scope 
+	(<strong>firstName</strong> and
+	<strong>lastName</strong>).</p>
+	<p>The <strong>ng-model</strong> directives bind the input fields to  
+	the controller properties (firstName and lastName).</p>
+	<hr>
+	
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName = "Babalu";
+    $scope.lastName = "Kumar";
+});
+</script>
+
+<h2>Controller Methods</h2>
+
+<div ng-controller="personCtrl">
+
+	First Name: <input type="text" ng-model="firstName"><br>
+	Last Name: <input type="text" ng-model="lastName"><br>
+	<br>
+	Full Name: {{fullName()}}
+
+</div>
+
+<script>
+//var app1 = angular.module('myApp', []);
+app.controller('personCtrl', function($scope) {
+    $scope.firstName = "Baban";
+    $scope.lastName = "Sinha";
+    $scope.fullName = function() {
+        return $scope.firstName + " " + $scope.lastName;
+    }
+});
+</script>
+
+<hr>
+<h2>Controllers In External Files</h2>
+<p>In larger applications, it is common to store controllers in 
+external files.</p>
+
+<div ng-controller="namesCtrl">
+
+<ul>
+  <li ng-repeat="x in names">
+    {{ x.name + ', ' + x.country }}
+  </li>
+</ul>
+
+</div>
+
+<script src="scripts/js/namesController.js"></script>
+
+</body>
+</html>
