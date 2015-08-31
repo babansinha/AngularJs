@@ -1,0 +1,11 @@
+<div class="container">
+	<h2> View Students </h2>
+	Search:
+	<br/>
+		<input type="text" ng-model="name" />
+	<br/>
+	<ul>
+		<li ng-repeat="student in students | filter:name">{{student.name}} , {{student.city}}</li>
+	</ul>
+
+</div>

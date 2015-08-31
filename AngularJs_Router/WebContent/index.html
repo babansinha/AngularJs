@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="scripts/js/angular-1.3.16.js"></script>
+<script src="scripts/js/angular-route.min.js"></script>
+
+</head>
+<body ng-app="mainApp">
+	<h1>AngularJs Routing concepts</h1>
+	
+<div class="container">
+	<p>{{message}}</p>
+	
+	<a href="#/viewStudents"> View Students List</a><br>
+	<a href="#/angular-route-template-1">angular-route-template-1.html</a>
+</div>
+
+<div ng-view></div>
+
+<script>
+var mainApp = angular.module("mainApp", ['ngRoute']);
+
+mainApp.config(function($routeProvider) {
+	$routeProvider
+		.when('/viewStudents', {
+			templateUrl: 'viewStudents.html',
+			controller: 'StudentController'
+		})
+		.when('/angular-route-template-1', {
+			templateUrl: 'angular-route-template-1.html',
+			controller: 'StudentController'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
+});
+
+mainApp.controller('StudentController', function($scope) {
+	$scope.students = [
+		{name: 'Baban Kumar Sinha', city:'Pune'},
+		{name: 'Bhanu Prakash Sinha', city:'Dhargulli'},
+		{name: 'Ahilya Sinha', city:'Jharkhand'}
+	];
+
+	$scope.message = "Click on the hyper link to view the students list.";
+});
+</script>
+</body>
+</html>
